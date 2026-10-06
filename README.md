@@ -8,6 +8,18 @@ the street/zone level using rainfall data, satellite imagery, elevation data, an
 ![ML](https://img.shields.io/badge/ML-LightGBM-orange)
 ![PostGIS](https://img.shields.io/badge/Database-PostGIS-blue)
 ![Docker](https://img.shields.io/badge/Deploy-Docker-2496ED)
+![Jenkins CI](https://img.shields.io/badge/CI-Jenkins-D24939?logo=jenkins&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-13%20Passed-brightgreen)
+
+---
+
+## 🔄 Continuous Integration (Sprint 08)
+
+The project includes an automated Continuous Integration pipeline implemented with Jenkins (`Jenkinsfile`):
+- **Automated SCM Checkout**: Automatically retrieves source code upon Git repository updates.
+- **Isolated Environment Build**: Prepares Python dependencies in an isolated virtual environment.
+- **Automated Unit & Regression Testing**: Executes 13 `pytest` test suites verifying flood threshold boundaries, feature mappings, and health checks.
+- **Docker Container Packaging**: Automatically builds and tags Docker images (`chennai-flood-backend:build-<BUILD_NUMBER>` and `latest`).
 
 ---
 

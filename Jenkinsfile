@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        PATH = "/opt/homebrew/bin:/usr/local/bin:${env.PATH}"
         IMAGE_NAME = "chennai-flood-backend"
         IMAGE_TAG = "build-${BUILD_NUMBER}"
         PYTHONUNBUFFERED = "1"
@@ -20,7 +21,12 @@ pipeline {
             steps {
                 echo '=== Stage 2: Application Build & Dependency Setup ==='
                 sh '''
-                    python3 -m venv venv || virtualenv venv
+                    if command -v python3.11 >/dev/null 2>&1; then
+                        PYTHON_BIN="python3.11"
+                    else
+                        PYTHON_BIN="python3"
+                    fi
+                    $PYTHON_BIN -m venv venv
                     . venv/bin/activate
                     pip install --upgrade pip
                     pip install -r backend/requirements.txt

@@ -7,13 +7,12 @@ client = TestClient(app)
 
 
 def test_root_endpoint():
-    """Test root endpoint returns welcome payload."""
     response = client.get("/")
     assert response.status_code == 200
     data = response.json()
-    # Controlled failure simulation for Sprint 09: verify pipeline gating prevents deployment
-    assert data["status"] == "failure_simulation_prevent_deployment"
-    assert "version" in data
+    assert data["status"] == "online"
+    assert data["version"] == "1.1.0"
+    assert "deployment" in data
 
 
 def test_health_check():

@@ -11,7 +11,8 @@ def test_root_endpoint():
     response = client.get("/")
     assert response.status_code == 200
     data = response.json()
-    assert data["status"] == "online"
+    # Controlled failure simulation for Sprint 09: verify pipeline gating prevents deployment
+    assert data["status"] == "failure_simulation_prevent_deployment"
     assert "version" in data
 
 
